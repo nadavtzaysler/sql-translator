@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:8080'
-  : 'http://sql-translator:8080'
+const BASE_URL = `http://${window.location.hostname}:8080`
 
 export function translateQuery (inputDialect, outputDialect, query) {
   return axios.post(
