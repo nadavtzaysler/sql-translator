@@ -10,7 +10,11 @@ services:
 
   vue-frontend:
     container_name: vue-frontend
-    image: vue-frontend:0.0.4
+    image: vue-frontend:git2
+    environment:
+      HEADER_MSG: "✨ Welcome!"
+      HEADER_LINK: "https://example.com"
+      RUN_LINK:  "https://example.com"
     ports:
       - "80:80"
     depends_on:
