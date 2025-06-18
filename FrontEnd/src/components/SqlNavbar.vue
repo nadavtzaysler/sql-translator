@@ -1,12 +1,12 @@
 <template>
-  <div v-if="headerMsg" class="header-banner">
-    <a v-if="headerLink" :href="headerLink" target="_blank" rel="noopener" class="header-link">
-      {{ headerMsg }}
-    </a>
-    <span v-else>{{ headerMsg }}</span>
-  </div>
+    <div v-if="headerMsg" class="header-banner">
+      <a v-if="headerLink" :href="headerLink" target="_blank" rel="noopener" class="header-link">
+        {{ headerMsg }}
+      </a>
+      <span v-else>{{ headerMsg }}</span>
+    </div>
 
-  <nav>
+    <nav>
     <img id="main-logo" alt="Vue logo" src="../assets/logo.png">
   </nav>
 </template>
@@ -40,8 +40,8 @@ nav {
   display: flex;
 }
 
-#main-logo {
-  width: 9vw;
+#main-logo{
+width: 9vw;
 }
 
 .header-banner {
