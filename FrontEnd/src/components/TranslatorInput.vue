@@ -17,7 +17,7 @@
   <div class="btn-container">
   <button v-on:click="translate" id="translate-btn">Translate <FontAwesomeIcon :icon="['fas', 'arrow-right']" /></button>
   <button v-if="outputVal" v-on:click="copyResult" id="copy-btn"> <FontAwesomeIcon :icon="['fas', 'copy']" /></button>
-  <a v-if="outputVal && runLink" :href="runLink+'/?sql='+outputVal" id="super-btn"> Run query<FontAwesomeIcon :icon="['fas', 'bolt']" /></a>
+  <a v-if="outputVal && runLink" :href="runLink+'/?sql='+outputVal" id="run-btn"> Run query<FontAwesomeIcon :icon="['fas', 'bolt']" /></a>
 </div>
 </template>
 
@@ -142,7 +142,7 @@ box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 background-color: #a1b4d3;
 }
 
-#translate-btn>*, #translate-btn{
+#translate-btn>*, #translate-btn, #copy-btn>*, #copy-btn, #run-btn>*, #run-btn{
   color: rgb(77, 77, 77);
   font-size: 4vh;
 }
@@ -159,16 +159,11 @@ background-color: #a1b4d3;
 box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-#copy-btn>*, #copy-btn{
-  color: rgb(77, 77, 77);
-  font-size: 4vh;
-}
-
 #copy-btn:hover {
 background-color: #b1e8db;
 }
 
-#super-btn{
+#run-btn{
   cursor: pointer;
   background-color: #75ffc1;
   width: 20%;
@@ -180,12 +175,7 @@ background-color: #b1e8db;
 box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-#super-btn>*, #super-btn{
-  color: rgb(77, 77, 77);
-  font-size: 4vh;
-}
-
-#super-btn:hover {
+#run-btn:hover {
 background-color: #b5e8b1;
 }
 
