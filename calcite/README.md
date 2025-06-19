@@ -17,14 +17,17 @@ HQL2SQL is a Spring Boot application designed to translate SQL queries written i
   ```
 
 ### Translate Query
-- **POST** `/api/translate`
+- **POST** `/translate`
 - **Request Body:**
   ```json
-  { "hiveQuery": "SELECT * FROM my_table" }
+  { "query": "SELECT * FROM my_table" }
   ```
+- **Request Parameters:**
+  - `input`: The input SQL dialect (e.g., Hive, Oracle)
+  - `output`: The output SQL dialect (e.g., Trino)
 - **Response:**
   ```json
-  { "trinoQuery": "SELECT * FROM my_table" }
+  { "trinoSql": "SELECT * FROM my_table" }
   ```
 
 ## Getting Started

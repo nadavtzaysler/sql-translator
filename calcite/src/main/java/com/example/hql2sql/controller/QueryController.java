@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 @RequiredArgsConstructor
 public class QueryController {
 
@@ -21,12 +21,15 @@ public class QueryController {
     }
 
     @PostMapping("/translate")
-    public ResponseEntity<Map<String, String>> translateSyntaxToTrino(@RequestBody Map<String, String> request) {
-        String hqlQuery = request.get("hqlQuery");
-        if (hqlQuery == null || hqlQuery.trim().isEmpty()) {
+    public ResponseEntity<Map<String, String>> translateSyntaxToTrino(
+            @RequestBody Map<String, String> request,
+            @RequestParam String input,
+            @RequestParam String output) {
+        String query = request.get("query");
+        if (query == null || query.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("error", "No query provided"));
         }
-        String trinoSql = queryService.translateSyntaxToTrino(hqlQuery);
+        String trinoSql = queryService.translateSyntaxToTrino(query);
         return ResponseEntity.ok(Map.of("trinoSql", trinoSql));
     }
 }

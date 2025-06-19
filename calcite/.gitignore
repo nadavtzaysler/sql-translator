@@ -21,3 +21,12 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+*.log
+*.class
+*.jar
