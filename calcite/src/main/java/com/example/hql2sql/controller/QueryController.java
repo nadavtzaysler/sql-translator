@@ -15,7 +15,7 @@ public class QueryController {
 
     private final QueryService queryService;
 
-    @GetMapping("/sql-syntaxes")
+    @GetMapping("/supported")
     public ResponseEntity<List<String>> getSqlSyntaxes() {
         return ResponseEntity.ok(queryService.getSqlSyntaxes());
     }

@@ -24,7 +24,6 @@ public class QueryService {
 
     public String translateSyntaxToTrino(String hqlQuery) {
         try {
-            // Create a SQL parser
             SqlParser.Config parserConfig = SqlParser.config()
                     .withLex(Lex.MYSQL)
                     .withConformance(SqlConformanceEnum.BABEL)
@@ -42,10 +41,8 @@ public class QueryService {
                             .defaultSchema(rootSchema)
                             .build());
 
-            // Parse the HQL query
             SqlNode sqlNode = planner.parse(hqlQuery);
-
-            // Use SqlPrettyWriter to output SQL as a single line
+            
             SqlPrettyWriter writer = new SqlPrettyWriter();
             sqlNode.unparse(writer, 0, 0);
             return writer.toString().replaceAll("[\\r\\n]+", " ").trim();
