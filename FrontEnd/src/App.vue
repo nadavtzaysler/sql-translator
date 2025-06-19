@@ -1,9 +1,14 @@
 <template>
+  <SqlNavbar/>
   <RouterView/>
 </template>
 <script>
+import SqlNavbar from '@/components/SqlNavbar.vue'
 
 export default {
+  components: {
+    SqlNavbar
+  }
 
 }
 </script>

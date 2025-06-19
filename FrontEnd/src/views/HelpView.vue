@@ -1,13 +1,13 @@
 <template>
-  <TranslatorInput />
+  <HelpInfo />
 </template>
 <script>
-import TranslatorInput from '@/components/TranslatorInput.vue'
+import HelpInfo from '@/components/HelpInfo.vue'
 
 export default {
-  name: 'HomeView',
+  name: 'HelpView',
   components: {
-    TranslatorInput
+    HelpInfo
   }
 }
 </script>
