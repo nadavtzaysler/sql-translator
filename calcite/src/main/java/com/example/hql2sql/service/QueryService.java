@@ -32,7 +32,6 @@ public class QueryService {
                     .withUnquotedCasing(SqlParser.Config.DEFAULT.unquotedCasing())
                     .withQuoting(SqlParser.Config.DEFAULT.quoting());
 
-            // Create a planner
             SchemaPlus rootSchema = Frameworks.createRootSchema(true);
 
             Planner planner = Frameworks.getPlanner(
@@ -42,7 +41,7 @@ public class QueryService {
                             .build());
 
             SqlNode sqlNode = planner.parse(hqlQuery);
-            
+
             SqlPrettyWriter writer = new SqlPrettyWriter();
             sqlNode.unparse(writer, 0, 0);
             return writer.toString().replaceAll("[\\r\\n]+", " ").trim();
