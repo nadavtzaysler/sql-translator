@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import HelpView from '../views/HelpView.vue'
+import NotFound from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/help',
     name: 'help',
     component: HelpView
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Not found',
+    component: NotFound
   }
 ]
 

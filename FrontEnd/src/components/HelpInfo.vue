@@ -85,6 +85,8 @@
   <li>Try both engines if you're unsure</li>
 </ul>
 
+<p> for feather help checkout <a href="https://trino.io/docs/current/appendix/from-hive.html"> trino docs about Migrating from Hive to trino</a></p>
+
   </div>
 </template>
 

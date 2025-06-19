@@ -36,8 +36,8 @@ export default {
   },
   async created () {
     const config = await fetchRuntimeConfig()
-    this.headerMsg = config.HEADER_MSG
-    this.headerLink = config.HEADER_LINK
+    this.headerMsg = config.MAIN_HEADER_MSG
+    this.headerLink = config.MAIN_HEADER_HYPERLINK
 
     const allRoutes = this.$router.getRoutes()
     this.navRoutes = allRoutes.filter(

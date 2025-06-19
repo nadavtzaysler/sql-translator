@@ -1,13 +1,13 @@
 <template>
-  <HelpInfo />
+  <NotFound/>
 </template>
 <script>
-import HelpInfo from '@/components/HelpInfo.vue'
+import NotFound from '@/components/NotFound.vue'
 
 export default {
-  name: 'HelpView',
+  name: 'NotFoundView',
   components: {
-    HelpInfo
+    NotFound
   }
 }
 </script>

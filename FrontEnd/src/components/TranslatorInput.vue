@@ -80,7 +80,7 @@ export default {
     this.$store.dispatch('loadDialects')
     const config = await fetchRuntimeConfig()
 
-    this.runLink = config.RUN_LINK
+    this.runLink = config.RUN_BUTTON_HYPERLINK
   }
 }
 </script>

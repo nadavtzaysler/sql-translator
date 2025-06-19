@@ -5,9 +5,9 @@ echo "Starting container..."
 # Inject runtime config from env vars
 cat <<EOF > /usr/share/nginx/html/config.json
 {
-  "HEADER_MSG": "${HEADER_MSG}",
-  "HEADER_LINK": "${HEADER_LINK}",
-  "RUN_LINK": "${RUN_LINK}"
+  "MAIN_HEADER_MSG": "${MAIN_HEADER_MSG}",
+  "MAIN_HEADER_HYPERLINK": "${MAIN_HEADER_HYPERLINK}",
+  "RUN_BUTTON_HYPERLINK": "${RUN_BUTTON_HYPERLINK}"
 }
 EOF
 
