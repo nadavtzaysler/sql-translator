@@ -24,10 +24,9 @@ public class QueryController {
     public ResponseEntity<Map<String, String>> translateSyntaxToTrino(@RequestBody Map<String, String> request) {
         String hqlQuery = request.get("hqlQuery");
         if (hqlQuery == null || hqlQuery.trim().isEmpty()) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(Map.of("error", "No query provided"));
         }
         String trinoSql = queryService.translateSyntaxToTrino(hqlQuery);
         return ResponseEntity.ok(Map.of("trinoSql", trinoSql));
     }
 }
-
