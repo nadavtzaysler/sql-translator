@@ -1,74 +1,104 @@
-# HQL2SQL
+# 🛠️ SQL Translator 
 
-HQL2SQL is a Spring Boot application designed to translate SQL queries written in different dialects (such as Hive or Oracle) into Trino-compatible SQL. It leverages Apache Calcite for parsing and translation, providing a REST API for easy integration.
+A SQL dialect translator with a user-friendly interface and support for multiple translation engines.
+Currently supports [SQLGlot](https://github.com/tobymao/sqlglot) and [Apache Calcite](https://calcite.apache.org/).
 
-## Features
-- Translate SQL queries from Hive or Oracle syntax to Trino SQL
-- REST API endpoints for translation and listing supported syntaxes
-- Built with Spring Boot and Apache Calcite
+> ⚠️ This project is under active development. Contributions and feedback are welcome!
 
-## API Endpoints
+---
 
-### List Supported Syntaxes
-- **GET** `/api/supported`
-- **Response:**
-  ```json
-  ["Hive", "Oracle"]
-  ```
+## ✨ Features
 
-### Translate Query
-- **POST** `/api/translate`
-- **Request Body:**
-  ```json
-  { "hiveQuery": "SELECT * FROM my_table" }
-  ```
-- **Response:**
-  ```json
-  { "trinoQuery": "SELECT * FROM my_table" }
-  ```
+* 🌐 Web-based UI (served at **port 80**)
+* 🧠 Choose translation engine: **SQLGlot** or **Calcite**
+* 📥 Select **input dialect**
+* 📤 Select **output dialect**
+* 📝 Input your SQL query and translate it instantly
+* 🐳 Easy to run with `docker-compose`
 
-## Getting Started
+---
 
-### Prerequisites
-- Java 11 or higher
-- Maven 3.6+
+## 🚀 Quick Start
 
-### Build and Run (Maven)
-1. Navigate to the `calcite` directory:
-   ```sh
-   cd HQL2SQL/calcite
-   ```
-2. Build the project:
-   ```sh
-   mvn clean package -DskipTests
-   ```
-3. Run the application:
-   ```sh
-   java -jar target/*.jar
-   ```
-4. The API will be available at [http://localhost:8082](http://localhost:8082)
+### 1. Clone the repository
 
-### Build and Run (Docker)
-1. From the project root, build the Docker image:
-   ```sh
-   docker build -t hql2sql ./calcite
-   ```
-2. Run the Docker container:
-   ```sh
-   docker run -p 8082:8082 hql2sql
-   ```
-3. The API will be available at [http://localhost:8082](http://localhost:8082)
-
-## Configuration
-- The server runs on port `8082` by default (see `application.properties`).
-
-## Example Usage
-```
-curl -X POST http://localhost:8082/api/translate \
-  -H "Content-Type: application/json" \
-  -d '{"hqlQuery": "SELECT * FROM my_table"}'
+```bash
+git clone https://github.com/yourusername/sql-translator.git
+cd sql-translator
 ```
 
-## License
-we have no license
+### 2. Run with Docker Compose
 
+```bash
+docker-compose up
+```
+
+* UI available at: [http://localhost](http://localhost)
+* SQLGlot API: `http://localhost:8080`
+* Calcite API: `http://localhost:8082`
+
+---
+
+## 🧱 Architecture
+
+```text
++------------------+
+|                  |
+|      Client      |
+|  (Browser - UI)  |
+|                  |
++--------+---------+
+         |
+         | User selects:
+         | - Input dialect
+         | - Output dialect
+         | - Translation engine (Glot/Calcite)
+         |
+         v
++--------+---------+
+|      Frontend     |
+|     (Vue.js)      |
+|       :80         |
++--------+----------+
+         |
+         | Based on selected engine:
+         |
+         |--------------------+
+         |                    |
+         v                    v
++----------------+    +----------------------+
+| SQLGlot API    |    | Calcite API          |
+| (Python @8080) |    | (Java + Calcite @8082)|
++----------------+    +----------------------+
+```
+
+The frontend dynamically routes the translation request to the selected engine (Glot or Calcite) depending on user input.
+
+---
+
+## 🔧 Configuration
+
+Currently configured for simplicity:
+
+* Static engine selection (per request)
+
+---
+
+## 🧑‍💻 Contributing
+
+Contributions are welcome!
+
+To contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit and push your changes
+4. Open a pull request
+
+Issues, suggestions, and feature requests are encouraged.
+
+---
+
+## 📍 Roadmap
+* [ ] Support for more engines (e.g. Oracle, Presto, DuckDB)
+* [ ] Internationalization
