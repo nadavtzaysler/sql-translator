@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  sql-translator:
+    container_name: sql-translator
+    image: sql-translator:0.0.6
+    hostname: sql-translator
+    ports:
+      - "8080:8080"
+
+  vue-frontend:
+    container_name: vue-frontend
+    image: vue-frontend:git2
+    environment:
+      HEADER_MSG: "✨ Welcome!"
+      HEADER_LINK: "https://example.com"
+      RUN_LINK:  "https://example.com"
+    ports:
+      - "80:80"
+    depends_on:
+      - sql-translator
