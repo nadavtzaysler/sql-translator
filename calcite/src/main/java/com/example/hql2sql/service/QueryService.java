@@ -54,4 +54,5 @@ public class QueryService {
             throw new RuntimeException("Error translating HQL to Trino SQL: " + e.getMessage(), e);
         }
     }
-} 
+}
+

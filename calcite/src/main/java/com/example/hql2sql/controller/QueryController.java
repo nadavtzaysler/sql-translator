@@ -29,4 +29,5 @@ public class QueryController {
         String trinoSql = queryService.translateSyntaxToTrino(hqlQuery);
         return ResponseEntity.ok(Map.of("trinoSql", trinoSql));
     }
-} 
+}
+
