@@ -15,6 +15,7 @@ services:
       MAIN_HEADER_MSG: "✨ Welcome!"
       MAIN_HEADER_HYPERLINK: "https://example.com"
       RUN_BUTTON_HYPERLINK:  "https://example.com"
+      TRINO_DOCS_DNS: "https://example.com"
     ports:
       - "80:80"
     depends_on:
