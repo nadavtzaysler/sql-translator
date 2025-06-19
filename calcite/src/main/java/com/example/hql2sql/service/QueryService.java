@@ -17,8 +17,8 @@ public class QueryService {
 
     public List<String> getSqlSyntaxes() {
         List<String> syntaxes = new ArrayList<>();
-        syntaxes.add("HQL");
-        syntaxes.add("VQL");
+        syntaxes.add("Hive");
+        syntaxes.add("Oracle");
         return syntaxes;
     }
 
