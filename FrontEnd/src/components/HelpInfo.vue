@@ -86,8 +86,8 @@
 </ul>
 
 <p> For further help, check out the
-  <a :href="TRINO_DOCS_DNS+'/docs/current/appendix/from-hive.html'" target="_blank" rel="noopener">
-    Trino documentation about migrating from Hive
+  <a :href="DOCS_HYPERLINK" target="_blank" rel="noopener">
+     documentation about migration
   </a>.</p>
 
   </div>
@@ -99,13 +99,13 @@ import { fetchRuntimeConfig } from '../utils/config'
 export default {
   data () {
     return {
-      TRINO_DOCS_DNS: 'https://trino.io'
+      DOCS_HYPERLINK: 'https://trino.io/docs/current/appendix/from-hive.html'
     }
   },
   async created () {
     const config = await fetchRuntimeConfig()
-    if (config.TRINO_DOCS_DNS) {
-      this.TRINO_DOCS_DNS = config.TRINO_DOCS_DNS
+    if (config.DOCS_HYPERLINK) {
+      this.DOCS_HYPERLINK = config.DOCS_HYPERLINK
     }
   }
 }
