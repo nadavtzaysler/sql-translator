@@ -33,12 +33,12 @@ def get_supported_dialects():
     responses={400: {"model": ErrorResponse}}
 )
 def translate(
-    input: str = Query(..., description="Source dialect"),
-    output: str = Query(..., description="Target dialect"),
+    inputDialect: str = Query(..., description="Source dialect"),
+    outputDialect: str = Query(..., description="Target dialect"),
     body: TranslationRequest = ...
 ):
-    input_dialect = input.lower()
-    output_dialect = output.lower()
+    input_dialect = inputDialect.lower()
+    output_dialect = outputDialect.lower()
 
     if input_dialect not in SUPPORTED_DIALECTS or output_dialect not in SUPPORTED_DIALECTS:
         raise HTTPException(
