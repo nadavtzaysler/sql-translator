@@ -16,6 +16,7 @@ import java.util.List;
 public class QueryService {
 
     public List<String> getSqlSyntaxes() {
+        return List.of("Hive", "Oracle");
         List<String> syntaxes = new ArrayList<>();
         syntaxes.add("Hive");
         syntaxes.add("Oracle");
