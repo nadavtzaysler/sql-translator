@@ -45,12 +45,11 @@ HQL2SQL is a Spring Boot application designed to translate SQL queries written i
    ```sh
    mvn clean package -DskipTests
    ```
-3. if preferred, change the port in `calcite/src/main/resources/application.properties`
-4. Run the application:
+3. Run the application:
    ```sh
    java -jar target/*.jar
    ```
-5. The API will be available at [http://localhost:8082](http://localhost:8082)
+4. The API will be available at [http://localhost:8082](http://localhost:8082)
 
 ### Build and Run (Docker)
 1. From the project root, build the Docker image:
@@ -64,7 +63,7 @@ HQL2SQL is a Spring Boot application designed to translate SQL queries written i
 3. The API will be available at [http://localhost:8082](http://localhost:8082)
 
 ## Configuration
-- The server runs on port `8082` by default (see `application.properties`).
+- The server runs on port `8082` by default. You can change this by setting the `PORT` environment variable.
 
 ## Example Usage
 ```

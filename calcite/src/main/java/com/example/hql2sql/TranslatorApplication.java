@@ -10,7 +10,7 @@ public class TranslatorApplication {
 
     private static final Logger log = LoggerFactory.getLogger(TranslatorApplication.class);
     public static void main(String[] args) {
-        log.info("starting translatorapplication");
+        log.info("starting translator application");
         SpringApplication.run(TranslatorApplication.class, args);
     }
 }

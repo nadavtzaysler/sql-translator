@@ -23,8 +23,8 @@ public class QueryController {
     @PostMapping("/translate")
     public ResponseEntity<Map<String, String>> translateSyntaxToTrino(
             @RequestBody Map<String, String> request,
-            @RequestParam String input,
-            @RequestParam String output) {
+            @RequestParam String inputDialect,
+            @RequestParam String outputDialect) {
         String query = request.get("query");
         if (query == null || query.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("error", "No query provided"));
