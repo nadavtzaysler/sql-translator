@@ -10,7 +10,7 @@ HQL2SQL is a Spring Boot application designed to translate SQL queries written i
 ## API Endpoints
 
 ### List Supported Syntaxes
-- **GET** `/api/supported`
+- **GET** `/supported`
 - **Response:**
   ```json
   ["Hive", "Oracle"]
