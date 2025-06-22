@@ -58,7 +58,7 @@ export default {
       return this.getDialects
     },
     activeBackendUrl () {
-      return this.getActiveBackendUrl
+      return this.getActiveBackend
     }
   },
   methods: {
