@@ -1,13 +1,13 @@
 <template>
-  <TranslatorInput />
+  <TranslatorMain />
 </template>
 <script>
-import TranslatorInput from '@/components/TranslatorInput.vue'
+import TranslatorMain from '@/components/TranslatorMain.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    TranslatorInput
+    TranslatorMain
   }
 }
 </script>

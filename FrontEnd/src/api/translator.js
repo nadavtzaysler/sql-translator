@@ -1,22 +1,20 @@
 import axios from 'axios'
 
-const BASE_URL = `http://${window.location.hostname}:8080`
-
-export function translateQuery (inputDialect, outputDialect, query) {
+export function translateQuery (backendUrl, inputDialect, outputDialect, query) {
   return axios.post(
-    `${BASE_URL}/translate`,
+    `${backendUrl}/translate`,
     {
       query
     },
     {
       params: {
-        input: inputDialect,
-        output: outputDialect
+        inputDialect: inputDialect,
+        outputDialect: outputDialect
       }
     }
   )
 }
 
-export function fetchSupportedDialects () {
-  return axios.get(`${BASE_URL}/supported`)
+export function fetchSupportedDialects (backendUrl) {
+  return axios.get(`${backendUrl}/supported`)
 }
