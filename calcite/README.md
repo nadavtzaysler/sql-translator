@@ -67,9 +67,9 @@ HQL2SQL is a Spring Boot application designed to translate SQL queries written i
 
 ## Example Usage
 ```
-curl -X POST http://localhost:8082/api/translate \
+curl -X POST "http://localhost:8082/api/translate?input=Hive&output=Trino" \
   -H "Content-Type: application/json" \
-  -d '{"hqlQuery": "SELECT * FROM my_table"}'
+  -d '{"query": "SELECT * FROM my_table"}'
 ```
 
 ## License
