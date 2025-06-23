@@ -18,12 +18,15 @@ public class QueryService {
 
     public List<String> getSqlSyntaxes() {
         log.info("Fetching supported SQL syntaxes");
-        return List.of("Hive", "Oracle", "MsSql ");
+        return List.of("Hive", "Oracle", "MsSql", "Trino");
     }
 
     public String translateSyntaxToTrino(String hqlQuery, String inputDialect) {
         log.info("Translating {} to Trino SQL. Input query: {}", inputDialect, hqlQuery);
         try {
+            // Replace backticks and single quotes with double quotes
+            String normalizedQuery = hqlQuery.replace('`', '"').replace('\'', '"');
+
             SqlParser.Config parserConfig = ParserConfigProvider.getParserConfig(inputDialect);
 
             SchemaPlus rootSchema = Frameworks.createRootSchema(true);
@@ -34,7 +37,7 @@ public class QueryService {
                             .defaultSchema(rootSchema)
                             .build());
 
-            SqlNode sqlNode = planner.parse(hqlQuery);
+            SqlNode sqlNode = planner.parse(normalizedQuery);
 
             SqlPrettyWriter writer = new SqlPrettyWriter();
             sqlNode.unparse(writer, 0, 0);
