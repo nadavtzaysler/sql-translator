@@ -24,8 +24,7 @@ public class QueryService {
     public String translateSyntaxToTrino(String hqlQuery, String inputDialect) {
         log.info("Translating {} to Trino SQL. Input query: {}", inputDialect, hqlQuery);
         try {
-            // Replace backticks and single quotes with double quotes
-            String normalizedQuery = hqlQuery.replace('`', '"').replace('\'', '"');
+            String normalizedQuery = hqlQuery.replace('`', '\"').replace('\'', '\"').replaceAll(";\\s*$", "");
 
             SqlParser.Config parserConfig = ParserConfigProvider.getParserConfig(inputDialect);
 
@@ -42,6 +41,9 @@ public class QueryService {
             SqlPrettyWriter writer = new SqlPrettyWriter();
             sqlNode.unparse(writer, 0, 0);
             String trinoSql = writer.toString().replaceAll("[\\r\\n]+", " ").trim();
+            if (!trinoSql.endsWith(";")) {
+                trinoSql = trinoSql + ";";
+            }
             log.info("Translation successful. Output query: {}", trinoSql);
             return trinoSql;
         } catch (Exception e) {
