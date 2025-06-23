@@ -1,0 +1,4 @@
+apiVersion: v2
+name: sql-translator-chart
+description: A Helm chart for SQL Translator - SqlGlot + Calcite + Frontend
+version: 0.1.0

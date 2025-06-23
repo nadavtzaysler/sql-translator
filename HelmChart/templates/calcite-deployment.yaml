@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calcite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calcite
+  template:
+    metadata:
+      labels:
+        app: calcite
+    spec:
+      containers:
+        - name: calcite
+          image: "{{ .Values.calcite.image.repository }}:{{ .Values.calcite.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.calcite.service.port }}
