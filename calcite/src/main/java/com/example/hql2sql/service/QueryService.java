@@ -23,16 +23,10 @@ public class QueryService {
         return List.of("Hive", "Oracle", "MsSql ");
     }
 
-    public String translateSyntaxToTrino(String hqlQuery) {
-        log.info("Translating HQL to Trino SQL. Input query: {}", hqlQuery);
+    public String translateSyntaxToTrino(String hqlQuery, String inputDialect) {
+        log.info("Translating {} to Trino SQL. Input query: {}", inputDialect, hqlQuery);
         try {
-            SqlParser.Config parserConfig = SqlParser.config()
-                    .withLex(Lex.MYSQL)
-                    .withConformance(SqlConformanceEnum.BABEL)
-                    .withCaseSensitive(false)
-                    .withQuotedCasing(SqlParser.Config.DEFAULT.quotedCasing())
-                    .withUnquotedCasing(SqlParser.Config.DEFAULT.unquotedCasing())
-                    .withQuoting(SqlParser.Config.DEFAULT.quoting());
+            SqlParser.Config parserConfig = ParserConfigProvider.getParserConfig(inputDialect);
 
             SchemaPlus rootSchema = Frameworks.createRootSchema(true);
 
@@ -49,7 +43,6 @@ public class QueryService {
             String trinoSql = writer.toString().replaceAll("[\\r\\n]+", " ").trim();
             log.info("Translation successful. Output query: {}", trinoSql);
             return trinoSql;
-
         } catch (Exception e) {
             log.error("Error translating HQL to Trino SQL: {}", e.getMessage(), e);
             throw new RuntimeException("Error translating HQL to Trino SQL: " + e.getMessage(), e);

@@ -29,7 +29,7 @@ public class QueryController {
         if (query == null || query.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("error", "No query provided"));
         }
-        String trinoSql = queryService.translateSyntaxToTrino(query);
+        String trinoSql = queryService.translateSyntaxToTrino(query, inputDialect);
         return ResponseEntity.ok(Map.of("trinoSql", trinoSql));
     }
 }
