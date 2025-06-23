@@ -20,7 +20,7 @@ public class QueryService {
 
     public List<String> getSqlSyntaxes() {
         log.info("Fetching supported SQL syntaxes");
-        return List.of("Hive", "Oracle");
+        return List.of("Hive", "Oracle", "MsSql ");
     }
 
     public String translateSyntaxToTrino(String hqlQuery) {
