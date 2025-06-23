@@ -1,4 +1,4 @@
-flask==3.1.1
-sqlglot==26.28.1
-gunicorn==23.0.0
-flask-cors==6.0.1
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+sqlglot>=26.28.1
+pydantic>=2.7.0
