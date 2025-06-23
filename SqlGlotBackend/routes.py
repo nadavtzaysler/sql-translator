@@ -34,9 +34,9 @@ def get_supported_dialects():
     }
 )
 def translate(
+    body: TranslationRequest,
     inputDialect: str = Query(description="Source dialect"),
-    outputDialect: str = Query(description="Target dialect"),
-    body: TranslationRequest
+    outputDialect: str = Query(description="Target dialect")
 ):
     input_dialect = inputDialect.lower()
     output_dialect = outputDialect.lower()
