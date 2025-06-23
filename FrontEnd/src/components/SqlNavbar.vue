@@ -8,6 +8,7 @@
 
   <nav>
   <img id="main-logo" alt="Vue logo" src="../assets/logo.png">
+  <SelectModel/>
   <div class="nav-links">
       <RouterLink
         v-for="route in navRoutes"
@@ -24,9 +25,11 @@
 
 <script>
 import { fetchRuntimeConfig } from '../utils/config'
+import SelectModel from './SelectModel.vue'
 
 export default {
   name: 'SqlNavbar',
+  components: { SelectModel },
   data () {
     return {
       headerMsg: null,

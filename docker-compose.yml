@@ -3,20 +3,32 @@ version: '3.8'
 services:
   sql-translator:
     container_name: sql-translator
-    image: sql-translator:0.0.6
+    build:
+      context: ./SqlGlotBackend
     hostname: sql-translator
     ports:
       - "8080:8080"
 
+  calcite:
+    container_name: calcite
+    build:
+      context: ./calcite
+    hostname: calcite
+    ports:
+      - "8082:8082"
+
   vue-frontend:
     container_name: vue-frontend
-    image: vue-frontend:git2
+    build:
+      context: ./FrontEnd
     environment:
       MAIN_HEADER_MSG: "✨ Welcome!"
       MAIN_HEADER_HYPERLINK: "https://example.com"
-      RUN_BUTTON_HYPERLINK:  "https://example.com"
+      RUN_BUTTON_HYPERLINK: "https://example.com"
       DOCS_HYPERLINK: "https://example.com"
+      ACTIVE_BACKENDS: '[{ "name": "SqlGlot", "backendUrl": "http://localhost:8080" },{ "name": "Calcite", "backendUrl": "http://localhost:8082" }]'
     ports:
       - "80:80"
     depends_on:
       - sql-translator
+      - calcite
