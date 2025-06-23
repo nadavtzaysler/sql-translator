@@ -18,7 +18,7 @@ export default createStore({
     SET_DIALECTS (state, dialects) {
       state.sqlDialects = dialects
     },
-    async SET_ACTIVE_BACKEND_URL (state, backend) {
+    SET_ACTIVE_BACKEND_URL (state, backend) {
       state.activeBackendUrl = backend
     }
   },

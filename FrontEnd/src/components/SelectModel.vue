@@ -48,7 +48,8 @@ export default {
       this.backends = config.ACTIVE_BACKENDS
     }
 
-    await this.$store.commit('SET_ACTIVE_BACKEND_URL', this.backends[0].backendUrl)
+    this.$store.commit('SET_ACTIVE_BACKEND_URL', this.backends[0].backendUrl)
+    await this.$store.dispatch('loadDialects')
   }
 }
 </script>
