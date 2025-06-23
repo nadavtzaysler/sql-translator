@@ -20,16 +20,16 @@ public class QueryController {
         return ResponseEntity.ok(queryService.getSqlSyntaxes());
     }
 
-    @PostMapping("/translate")
-    public ResponseEntity<Map<String, String>> translateSyntaxToTrino(
+    @PostMapping(value = "/translate", produces = "text/plain")
+    public ResponseEntity<String> translateSyntaxToTrino(
             @RequestBody Map<String, String> request,
             @RequestParam String inputDialect,
             @RequestParam String outputDialect) {
         String query = request.get("query");
         if (query == null || query.trim().isEmpty()) {
-            return ResponseEntity.badRequest().body(Map.of("error", "No query provided"));
+            return ResponseEntity.badRequest().body("No query provided");
         }
         String trinoSql = queryService.translateSyntaxToTrino(query, inputDialect);
-        return ResponseEntity.ok(Map.of("trinoSql", trinoSql));
+        return ResponseEntity.ok(trinoSql);
     }
 }
