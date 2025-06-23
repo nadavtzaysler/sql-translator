@@ -14,7 +14,7 @@ public class ParserConfigProvider {
 
     static {
         CONFIG_MAP.put("hive", () -> SqlParser.config()
-                .withLex(Lex.MYSQL)
+                .withLex(Lex.JAVA)
                 .withConformance(SqlConformanceEnum.BABEL)
                 .withCaseSensitive(false)
                 .withQuotedCasing(SqlParser.Config.DEFAULT.quotedCasing())
