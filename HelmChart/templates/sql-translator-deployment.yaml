@@ -15,5 +15,6 @@ spec:
       containers:
         - name: sql-translator
           image: "{{ .Values.sqlTranslator.image.repository }}:{{ .Values.sqlTranslator.image.tag }}"
+          imagePullPolicy: {{ .Values.sqlTranslator.image.pullPolicy | default "IfNotPresent" }}
           ports:
             - containerPort: {{ .Values.sqlTranslator.service.port }}

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: vue-frontend
 spec:
+  type: NodePort
   selector:
     app: vue-frontend
   ports:

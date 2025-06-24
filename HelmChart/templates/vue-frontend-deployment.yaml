@@ -15,5 +15,17 @@ spec:
       containers:
         - name: vue-frontend
           image: "{{ .Values.vueFrontend.image.repository }}:{{ .Values.vueFrontend.image.tag }}"
+          imagePullPolicy: {{ .Values.vueFrontend.image.pullPolicy | default "IfNotPresent" }}
           ports:
             - containerPort: {{ .Values.vueFrontend.service.port }}
+          env:
+            - name: MAIN_HEADER_MSG
+              value: {{ .Values.vueFrontend.env.MAIN_HEADER_MSG | quote }}
+            - name: MAIN_HEADER_HYPERLINK
+              value: {{ .Values.vueFrontend.env.MAIN_HEADER_HYPERLINK | quote }}
+            - name: RUN_BUTTON_HYPERLINK
+              value: {{ .Values.vueFrontend.env.RUN_BUTTON_HYPERLINK | quote }}
+            - name: DOCS_HYPERLINK
+              value: {{ .Values.vueFrontend.env.DOCS_HYPERLINK | quote }}
+            - name: ACTIVE_BACKENDS
+              value: {{ .Values.vueFrontend.env.ACTIVE_BACKENDS | quote }}

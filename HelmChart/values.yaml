@@ -2,7 +2,7 @@ sqlTranslator:
   image:
     repository: sql-translator
     tag: latest
-    buildContext: SqlGlotBackend
+    pullPolicy: IfNotPresent
   service:
     port: 8080
 
@@ -10,15 +10,15 @@ calcite:
   image:
     repository: calcite
     tag: latest
-    buildContext: calcite
+    pullPolicy: IfNotPresent
   service:
     port: 8082
 
-frontend:
+vueFrontend:
   image:
     repository: vue-frontend
     tag: latest
-    buildContext: FrontEnd
+    pullPolicy: IfNotPresent
   service:
     port: 80
   env:
@@ -26,4 +26,4 @@ frontend:
     MAIN_HEADER_HYPERLINK: "https://example.com"
     RUN_BUTTON_HYPERLINK: "https://example.com"
     DOCS_HYPERLINK: "https://example.com"
-    ACTIVE_BACKENDS: '[{ "name": "SqlGlot", "backendUrl": "http://sql-translator:8080" },{ "name": "Calcite", "backendUrl": "http://calcite:8082" }]'
+    ACTIVE_BACKENDS: '[{ "name": "SqlGlot", "backendUrl": "http://sql-translator/calcite" },{ "name": "Calcite", "backendUrl": "http://sql-translator/sqlglot" }]'

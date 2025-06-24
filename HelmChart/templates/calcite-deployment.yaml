@@ -15,5 +15,6 @@ spec:
       containers:
         - name: calcite
           image: "{{ .Values.calcite.image.repository }}:{{ .Values.calcite.image.tag }}"
+          imagePullPolicy: {{ .Values.calcite.image.pullPolicy | default "IfNotPresent" }}
           ports:
             - containerPort: {{ .Values.calcite.service.port }}

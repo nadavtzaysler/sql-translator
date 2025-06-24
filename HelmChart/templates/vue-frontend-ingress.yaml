@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vue-frontend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: sql-translator
+      http:
+        paths:
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: vue-frontend
+                port:
+                  number: 80
+          - path: /sqlglot(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: sql-translator
+                port:
+                  number: 8080
+          - path: /calcite(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: calcite
+                port:
+                  number: 8082 
