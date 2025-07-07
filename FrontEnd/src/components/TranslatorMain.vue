@@ -81,6 +81,10 @@ export default {
       translateQuery(this.activeBackendUrl, this.inputDialect, this.outputDialect, this.inputVal)
         .then(response => {
           this.outputVal = response.data
+       }).catch(error => {
+          if (error.response && error.response.status === 400) {
+            this.toast.error(`Bad request: ${error.response?.data?.detail || error.response?.data || 'Unknown error'}`)
+          }
         })
     },
     copyResult () {
