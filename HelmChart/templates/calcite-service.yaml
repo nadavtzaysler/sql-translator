@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: calcite
+spec:
+  selector:
+    app: calcite
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: {{ .Values.calcite.service.port }}

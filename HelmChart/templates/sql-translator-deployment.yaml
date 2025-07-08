@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-translator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sql-translator
+  template:
+    metadata:
+      labels:
+        app: sql-translator
+    spec:
+      containers:
+        - name: sql-translator
+          image: "{{ .Values.sqlTranslator.image.repository }}:{{ .Values.sqlTranslator.image.tag }}"
+          imagePullPolicy: {{ .Values.sqlTranslator.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: {{ .Values.sqlTranslator.service.port }}

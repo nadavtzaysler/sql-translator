@@ -1,0 +1,29 @@
+sqlTranslator:
+  image:
+    repository: sql-translator
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 8080
+
+calcite:
+  image:
+    repository: calcite
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 8082
+
+vueFrontend:
+  image:
+    repository: vue-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 80
+  env:
+    MAIN_HEADER_MSG: "✨ Welcome!"
+    MAIN_HEADER_HYPERLINK: "https://example.com"
+    RUN_BUTTON_HYPERLINK: "https://example.com"
+    DOCS_HYPERLINK: "https://example.com"
+    ACTIVE_BACKENDS: '[{ "name": "SqlGlot", "backendUrl": "http://sql-translator/calcite" },{ "name": "Calcite", "backendUrl": "http://sql-translator/sqlglot" }]'
